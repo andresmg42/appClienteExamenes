@@ -29,40 +29,43 @@ public class Multicast extends Thread {
         }
     }
 
-    private static Object deserializarObjeto(byte[] datos) throws IOException, ClassNotFoundException {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(datos);
-        ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+    // private static Object deserializarObjeto(byte[] datos) throws IOException,
+    // ClassNotFoundException {
+    // ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(datos);
+    // ObjectInputStream objectInputStream = new
+    // ObjectInputStream(byteArrayInputStream);
 
-        // Deserializar los bytes a un objeto
-        Object objetoDeserializado = objectInputStream.readObject();
+    // // Deserializar los bytes a un objeto
+    // Object objetoDeserializado = objectInputStream.readObject();
 
-        // Cerrar streams
-        objectInputStream.close();
-        byteArrayInputStream.close();
+    // // Cerrar streams
+    // objectInputStream.close();
+    // byteArrayInputStream.close();
 
-        return objetoDeserializado;
-    }
+    // return objetoDeserializado;
+    // }
 
-    public void resivirExamen() {
-        byte[] mensajeRecibir = new byte[6400];
-        DatagramPacket dtp = new DatagramPacket(mensajeRecibir, mensajeRecibir.length);
-        Examen examen;
-        while (true) {
-            try {
-                socketMulticast.receive(dtp);
-                examen = (Examen) deserializarObjeto(dtp.getData());
-                System.out.println(examen.getNombre());
-                cont.setExamen(examen);
-                System.out.println(cont.getExamen().getNombre());
+    // public void resivirExamen() {
+    // byte[] mensajeRecibir = new byte[6400];
+    // DatagramPacket dtp = new DatagramPacket(mensajeRecibir,
+    // mensajeRecibir.length);
+    // Examen examen;
+    // while (true) {
+    // try {
+    // socketMulticast.receive(dtp);
+    // examen = (Examen) deserializarObjeto(dtp.getData());
+    // System.out.println(examen.getNombre());
+    // cont.setExamen(examen);
+    // System.out.println(cont.getExamen().getNombre());
 
-            } catch (IOException e) {
-                cerrarMulti();
-                break;
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+    // } catch (IOException e) {
+    // cerrarMulti();
+    // break;
+    // } catch (ClassNotFoundException e) {
+    // e.printStackTrace();
+    // }
+    // }
+    // }
 
     public void resivirMensaje() {
         byte[] mensajeRecibir = new byte[256];
@@ -73,6 +76,7 @@ public class Multicast extends Thread {
                 socketMulticast.receive(dtp);
                 mensaje = new String(dtp.getData());
                 gui.mostrarMensaje(mensaje);
+                System.out.println(mensaje);
 
             } catch (IOException e) {
                 cerrarMulti();
@@ -81,8 +85,9 @@ public class Multicast extends Thread {
         }
     }
 
+    @Override
     public void run() {
-        resivirExamen();
+        resivirMensaje();
 
     }
 

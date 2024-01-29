@@ -191,7 +191,7 @@ public class Gui extends JFrame {
      */
 
     public void mostrarMensaje(String mensaje) {
-        descripcionP.setText(mensaje + "\n");
+        descripcionP.append(mensaje + "\n");
     }
 
     public String obtenerTextoSeleccionado(ButtonGroup buttonGroup) {

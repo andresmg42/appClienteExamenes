@@ -57,6 +57,7 @@ public class conexion {
         do {
             try {
                 mensaje = (String) entrada.readObject();
+                System.out.println(mensaje);
                 gui.mostrarMensaje(mensaje);
             } catch (Exception e) {
                 gui.mostrarMensaje("error tipo de dato incorrecto");
