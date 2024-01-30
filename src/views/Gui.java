@@ -46,7 +46,7 @@ public class Gui extends JFrame {
     Controlador cont;
 
     public Gui(Controlador cont) {
-        setSize(700, 600);
+        setSize(900, 600);
         setTitle("cliente");
         iniciarComponentes();
         setVisible(true);
@@ -91,7 +91,7 @@ public class Gui extends JFrame {
 
         pContenedor2 = new JPanel();
         pContenedor2.add(pSur);
-        descripcionP = new JTextArea(20, 30);
+        descripcionP = new JTextArea(20, 40);
 
         JScrollPane scrollPane = new JScrollPane(descripcionP);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

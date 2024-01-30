@@ -68,7 +68,7 @@ public class Multicast extends Thread {
     // }
 
     public void resivirMensaje() {
-        byte[] mensajeRecibir = new byte[256];
+        byte[] mensajeRecibir = new byte[3000];
         DatagramPacket dtp = new DatagramPacket(mensajeRecibir, mensajeRecibir.length);
         String mensaje;
         while (true) {
@@ -85,7 +85,6 @@ public class Multicast extends Thread {
         }
     }
 
-    @Override
     public void run() {
         resivirMensaje();
 
