@@ -75,8 +75,19 @@ public class Multicast extends Thread {
             try {
                 socketMulticast.receive(dtp);
                 mensaje = new String(dtp.getData());
-                gui.mostrarMensaje(mensaje);
-                System.out.println(mensaje);
+                cont.setPaquete(mensaje);
+                // gui.mostrarMensaje(cont.getPaquete());
+                cont.desempaquetar();
+                cont.separarPreguntas();
+                // gui.mostrarMensaje(mensaje);
+                // gui.mostrarMensaje(cont.getNombreExamen());
+                gui.mostrarMensaje(cont.getListaPreguntas().get(0).get(0));
+                gui.mostrarMensaje(cont.getListaPreguntas().get(0).get(1));
+                gui.mostrarMensaje(cont.getListaPreguntas().get(0).get(2));
+                gui.mostrarMensaje(cont.getListaPreguntas().get(0).get(3));
+                gui.mostrarMensaje(cont.getListaPreguntas().get(0).get(4));
+                gui.mostrarMensaje(cont.getListaPreguntas().get(0).get(5));
+                gui.mostrarMensaje(cont.getListaPreguntas().get(0).get(6));
 
             } catch (IOException e) {
                 cerrarMulti();

@@ -5,11 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Examen implements Serializable {
+public class Examen {
     private String nombre;
     private int tiempoDuracion; // en minutos
     private List<String> listaIntegrantes;
